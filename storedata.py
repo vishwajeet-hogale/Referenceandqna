@@ -13,7 +13,7 @@ def add_data(text,topic,summary):
     cur = conn.cursor()
     cur.execute("""INSERT INTO ChapterTS(chapter_text,topic,summary)
     VALUES("{}","{}","{}")""".format(text,topic,summary))
-    cur.commit()
+    conn.commit()
     cur.close()
 def get_all_records():
     conn = sqlite3.connect("new.db")
