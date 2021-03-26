@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="card card-body">
+        
+    <form action="" method="POST">
+      <div class="form-group">
+        <textarea class="form-control" name="text" placeholder="Enter the chapter text here"></textarea>
+      </div>
+      
+      
+      <button class="btn btn-primary btn-block">
+        Get Summary of chapter 
+      </button>
+    </form>
+</div>
+<h1 class="my-3">Chapter</h1>
+<div class="card card-body my-3">
+
+    <h4>{{text}}</h4>
+</div>
+<h1 class="my-3">Summary</h1>
+<div class="card card-body my-3">
+
+    <h3>{{data}}</h3>
+</div>
+{% endblock %}
