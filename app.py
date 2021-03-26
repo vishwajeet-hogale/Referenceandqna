@@ -13,8 +13,10 @@ def index():
 @app.route("/getchaptersummary",methods= ["POST","GET"])
 def getsummary():
     if request.method == "POST":
+        topic = request.form['topic']
         text = request.form["text"]
         data = generate_summary(text)
+        sd.add_data(text,topic,data)
         return render_template("getchapsum.html",data= data,text=text)
     return render_template("getchapsum.html")
 if __name__ == "__main__":
