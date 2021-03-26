@@ -18,7 +18,7 @@ def generate_summary(text):
                                         num_beams=4,
                                         no_repeat_ngram_size=2,
                                         min_length=70,
-                                        max_length= int(0.3*len(preprocess_text.split())),
+                                        max_length= int(0.5*len(preprocess_text.split())),
                                         early_stopping=True)
 
     output = tokenizer.decode(summary_ids[0], skip_special_tokens=True)

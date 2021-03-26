@@ -1,12 +1,13 @@
 from flask import Flask,render_template,redirect,url_for,flash,request
 from summary import generate_summary
-
+import storedata as sd
 app = Flask(__name__)
 
 app.secret_key = "HBCJSBJH454546SSCHJSBHCJBKSBKNCJAASnadn"
 
 @app.route("/",methods=["POST","GET"])
 def index():
+    sd.create_table()
     return render_template('index.html')
 
 @app.route("/getchaptersummary",methods= ["POST","GET"])
