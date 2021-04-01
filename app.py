@@ -16,9 +16,10 @@ def getsummary():
         topic = request.form['topic']
         text = request.form["text"]
         data = generate_summary(text)
+        print(data)
         sd.add_data(text,topic,data)
         all_data = sd.get_all_records()
-        return render_template("getchapsum.html",data= data,text=text,all_data = all_data)
+        return render_template("getchapsum.html",data= data,text=text,all_data=all_data)
     return render_template("getchapsum.html")
 if __name__ == "__main__":
     app.run(debug=True)
