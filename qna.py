@@ -32,20 +32,22 @@ null_score_diff_threshold = 0.0
 
 def to_list(tensor):
     return tensor.detach().cpu().tolist()
+    # print(tensor)
+    # return tensor.tolist()
 
 # Setup model
-config_class, model_class, tokenizer_class = (
-    AlbertConfig, AlbertForQuestionAnswering, AlbertTokenizer)
-config = config_class.from_pretrained(model_name_or_path)
-tokenizer = tokenizer_class.from_pretrained(
-    model_name_or_path, do_lower_case=True)
-model = model_class.from_pretrained(model_name_or_path, config=config)
+# config_class, model_class, tokenizer_class = (
+#     AlbertConfig, AlbertForQuestionAnswering, AlbertTokenizer)
+# config = config_class.from_pretrained(model_name_or_path)
+# tokenizer = tokenizer_class.from_pretrained(
+#     model_name_or_path, do_lower_case=True)
+# model = model_class.from_pretrained(model_name_or_path, config=config)
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-model.to(device)
+# model.to(device)
 
-processor = SquadV2Processor()
+# processor = SquadV2Processor()
 
 def run_prediction(question_texts, context_text):
     """Setup function to compute predictions"""
@@ -95,7 +97,7 @@ def run_prediction(question_texts, context_text):
             example_indices = batch[3]
 
             outputs = model(**inputs)
-
+            print(outputs)
             for i, example_index in enumerate(example_indices):
                 eval_feature = features[example_index.item()]
                 unique_id = int(eval_feature.unique_id)
@@ -128,6 +130,18 @@ def run_prediction(question_texts, context_text):
 
     return predictions
 if __name__ == "__main__":
+    config_class, model_class, tokenizer_class = (
+    AlbertConfig, AlbertForQuestionAnswering, AlbertTokenizer)
+    config = config_class.from_pretrained(model_name_or_path)
+    tokenizer = tokenizer_class.from_pretrained(
+        model_name_or_path, do_lower_case=True)
+    model = model_class.from_pretrained(model_name_or_path, config=config)
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+    model.to(device)
+
+    processor = SquadV2Processor()
     context = "New Zealand (Māori: Aotearoa) is a sovereign island country in the southwestern Pacific Ocean. It has a total land area of 268,000 square kilometres (103,500 sq mi), and a population of 4.9 million. New Zealand's capital city is Wellington, and its most populous city is Auckland."
     questions = ["How many people live in New Zealand?", 
                 "What's the largest city?"]
@@ -137,4 +151,4 @@ if __name__ == "__main__":
 
     # Print results
     for key in predictions.keys():
-    print(predictions[key])
+        print(predictions[key])
