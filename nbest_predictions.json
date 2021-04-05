@@ -1,0 +1,30 @@
+{
+    "0": [
+        {
+            "text": "4.9 million. New Zealand's capital city is Wellington, and its most populous city is",
+            "probability": 0.9999641291827736,
+            "start_logit": 6.392330169677734,
+            "end_logit": 4.63326358795166
+        },
+        {
+            "text": "",
+            "probability": 3.587081722648923e-05,
+            "start_logit": 0.38390597701072693,
+            "end_logit": 0.4061371684074402
+        }
+    ],
+    "1": [
+        {
+            "text": "million. New Zealand's capital city is Wellington, and its most populous city is Auckland.",
+            "probability": 0.9999477876971045,
+            "start_logit": 5.782000541687012,
+            "end_logit": 4.46529483795166
+        },
+        {
+            "text": "",
+            "probability": 5.2212302895391685e-05,
+            "start_logit": 0.1905672550201416,
+            "end_logit": 0.196587935090065
+        }
+    ]
+}
