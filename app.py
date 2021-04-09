@@ -21,6 +21,15 @@ def getsummary():
         all_data = sd.get_all_records()
         return render_template("getchapsum.html",data= data,text=text,all_data=all_data)
     return render_template("getchapsum.html")
-
+@app.route("/getanswer",methods= ["POST","GET"])
+def getanswer():
+    if request.method == "POST":
+        topic = request.form['topic']
+        text = request.form["text"]
+        question=request.form["question"]
+        data = get_answer(text,question)
+        
+        return render_template("qna.html",data= data[15:-2],text=text,question=question)
+    return render_template("qna.html")
 if __name__ == "__main__":
     app.run(debug=True)

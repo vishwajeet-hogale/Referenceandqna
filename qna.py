@@ -1,16 +1,16 @@
 
-context = "Incorporated in 1999, MTAR Technologies is a leading national player in the precision engineering industry. The company is primarily engaged in the manufacturing of mission-critical precision components with close tolerance and in critical assemblies through its precision machining, assembly, specialized fabrication, testing, and quality control processes. Since its inception, MTAR Technologies has significantly expanded its product portfolio including critical assemblies i.e. Liquid propulsion engines to GSLV Mark III, Base Shroud Assembly & Airframes for Agni Programs, Actuators for LCA, power units for fuel cells, Fuel machining head, Bridge & Column, Drive Mechanisms, Thimble Package, etc. A wide range of complex product portfolios meets the varied requirements of the Indian nuclear, Defence, and Space sector. ISRO, NPCIL, DRDO, Bloom Energy, Rafael, Elbit, etc. are some of the esteem clients. Currently, the firm has 7 state-of-the-art manufacturing facilities in Hyderabad, Telangana that undertake precision machining, assembly, specialized fabrication, brazing and heat treatment, testing and quality control, and other specialized processes."
-questions = ["which company is going to be listed?","which company is going to be IPO?","which company is going to be public?","which company is going to be listed on stock exchange?","which company is about to launch initial public offering?","which company is about to launch IPO?","which company is it talking about?","where is the company located?","in which country is it?"]
+
 
 
 import requests 
-req_body = {
-  "question_texts": [
-    "which company is going to be listed?","which company is going to be IPO?","which company is going to be public?","which company is going to be listed on stock exchange?","which company is about to launch initial public offering?","which company is about to launch IPO?","which company is it talking about?","where is the company located?","in which country is it?"
-  ],
-  "context_text": "Incorporated in 1999, MTAR Technologies is a leading national player in the precision engineering industry. The company is primarily engaged in the manufacturing of mission-critical precision components with close tolerance and in critical assemblies through its precision machining, assembly, specialized fabrication, testing, and quality control processes. Since its inception, MTAR Technologies has significantly expanded its product portfolio including critical assemblies i.e. Liquid propulsion engines to GSLV Mark III, Base Shroud Assembly & Airframes for Agni Programs, Actuators for LCA, power units for fuel cells, Fuel machining head, Bridge & Column, Drive Mechanisms, Thimble Package, etc. A wide range of complex product portfolios meets the varied requirements of the Indian nuclear, Defence, and Space sector. ISRO, NPCIL, DRDO, Bloom Energy, Rafael, Elbit, etc. are some of the esteem clients. Currently, the firm has 7 state-of-the-art manufacturing facilities in Hyderabad, Telangana that undertake precision machining, assembly, specialized fabrication, brazing and heat treatment, testing and quality control, and other specialized processes."
-}
-host = "http://8c56d61df2ba.ngrok.io"
-url = f"{host}/api"
-response = requests.post(url,json=req_body)
-print(response.text)
+
+
+def get_answer(text,question):
+  req_body={}
+  req_body["question_texts"]=question.split('","')
+  req_body["context_text"]=text
+  host = "http://a89df97acfc3.ngrok.io"
+  url = f"{host}/api"
+  response = requests.post(url,json=req_body)
+  print(response.text)
+  return(response.text)
