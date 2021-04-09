@@ -21,5 +21,6 @@ def getsummary():
         all_data = sd.get_all_records()
         return render_template("getchapsum.html",data= data,text=text,all_data=all_data)
     return render_template("getchapsum.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
